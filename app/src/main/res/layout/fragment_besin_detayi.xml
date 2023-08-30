@@ -6,21 +6,50 @@
     >
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".BesinDetayiFragment">
+        <ImageView
+            android:id="@+id/besinImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:minHeight="200dp"
+            android:scaleType="fitCenter"
+            android:layout_alignParentTop="true"
+            android:contentDescription="image of selected food"
+            >
 
+        </ImageView>
 
-        <Button
-            android:id="@+id/besin_detayi_button"
+        <TextView
+            android:id="@+id/besinIsim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="besin listesine git   "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_below="@id/besinImage"
+            android:text="besin ismi"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/besinKalori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/besinIsim"
+            android:text="besin kalori"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp">
+
+        </TextView>
+
+
+
+    </RelativeLayout>
 </layout>
