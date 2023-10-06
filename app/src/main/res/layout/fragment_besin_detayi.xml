@@ -10,15 +10,18 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".BesinDetayiFragment">
+        tools:context=".view.BesinDetayiFragment">
+
         <ImageView
             android:id="@+id/besinImage"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:minHeight="200dp"
-            android:scaleType="fitCenter"
             android:layout_alignParentTop="true"
             android:contentDescription="image of selected food"
+            android:minHeight="200dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:layout_margin="10dp"
             >
 
         </ImageView>
@@ -48,6 +51,50 @@
             android:layout_margin="10dp">
 
         </TextView>
+        <TextView
+            android:id="@+id/besinKarbonhidrat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Besin Karbonhidrat"
+            android:layout_below="@id/besinKalori"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+
+            >
+
+        </TextView>
+        <TextView
+            android:id="@+id/besinProtein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Besin Proteini"
+            android:layout_below="@id/besinKarbonhidrat"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+
+            >
+
+        </TextView>
+        <TextView
+            android:id="@+id/besingyag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Besin Yağ"
+            android:layout_below="@id/besinProtein"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+
+            >
+
+        </TextView>
+
+
 
 
 
