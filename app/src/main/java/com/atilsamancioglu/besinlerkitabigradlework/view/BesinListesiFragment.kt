@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_besin_listesi.besinYukleniyor
 
 
 class BesinListesiFragment : Fragment() {
-    private lateinit var viewModel :FoodListViewModel
+    private lateinit var viewModel: FoodListViewModel
     private var foodRecyclerAdapter = FoodRecyclerAdapter(arrayListOf())
 
     override fun onCreateView(
@@ -34,7 +34,7 @@ class BesinListesiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel= ViewModelProviders.of(this).get(FoodListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(FoodListViewModel::class.java)
         viewModel.refreshData()
 
         besinListRecycler.layoutManager = LinearLayoutManager(context)
@@ -43,35 +43,31 @@ class BesinListesiFragment : Fragment() {
         observeLiveData()
 
     }
-    fun observeLiveData(){
-        viewModel.hasFoodListChange.observe(viewLifecycleOwner, Observer { foodList->
+
+    fun observeLiveData() {
+        viewModel.hasFoodListChange.observe(viewLifecycleOwner, Observer { foodList ->
             foodList.let {
                 besinListRecycler.visibility = View.VISIBLE
                 foodRecyclerAdapter.updateFoodList(foodList)
             }
         })
-        viewModel.hasErrorMessage.observe(viewLifecycleOwner,Observer{error ->
-            error?.let{
-                if(error){
+        viewModel.hasErrorMessage.observe(viewLifecycleOwner, Observer { error ->
+            error?.let {
+                if (error) {
                     besinHataMesaji.visibility = View.VISIBLE
-
-
-                }else{
-                    besinHataMesaji.visibility=View.GONE
+                } else {
+                    besinHataMesaji.visibility = View.GONE
                 }
             }
         })
-        viewModel.isLoading.observe(viewLifecycleOwner,Observer{isLoadingCircular->
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoadingCircular ->
             isLoadingCircular?.let {
-                if(it){
+                if (it) {
                     besinYukleniyor.visibility = View.VISIBLE
-
-                }else{
+                } else {
                     besinYukleniyor.visibility = View.GONE
                 }
             }
-
-
         })
     }
 

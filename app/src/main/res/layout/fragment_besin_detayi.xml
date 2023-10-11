@@ -17,12 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:contentDescription="image of selected food"
             android:minHeight="200dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_launcher_background"
-            android:layout_margin="10dp"
-            >
+            app:srcCompat="@drawable/ic_launcher_background">
 
         </ImageView>
 
@@ -31,11 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/besinImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:text="besin ismi"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp">
+            android:textStyle="bold">
 
         </TextView>
 
@@ -44,53 +49,65 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/besinIsim"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:text="besin kalori"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp">
+            android:textStyle="bold">
 
         </TextView>
+
         <TextView
             android:id="@+id/besinKarbonhidrat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Besin Karbonhidrat"
             android:layout_below="@id/besinKalori"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
 
-            >
+            android:layout_marginBottom="10dp"
+            android:text="Besin Karbonhidrat"
+            android:textSize="20sp"
+            android:textStyle="bold">
 
         </TextView>
+
         <TextView
             android:id="@+id/besinProtein"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Besin Proteini"
             android:layout_below="@id/besinKarbonhidrat"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
 
-            >
+            android:layout_marginBottom="10dp"
+            android:text="Besin Proteini"
+            android:textSize="20sp"
+            android:textStyle="bold">
 
         </TextView>
+
         <TextView
-            android:id="@+id/besingyag"
+            android:id="@+id/besinyag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Besin Yağ"
             android:layout_below="@id/besinProtein"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
 
-            >
+            android:layout_marginBottom="10dp"
+            android:text="Besin Yağ"
+            android:textSize="20sp"
+            android:textStyle="bold">
 
         </TextView>
 
