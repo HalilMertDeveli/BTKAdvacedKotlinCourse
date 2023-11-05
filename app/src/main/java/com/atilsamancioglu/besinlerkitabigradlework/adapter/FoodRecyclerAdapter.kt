@@ -8,7 +8,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.atilsamancioglu.besinlerkitabigradlework.R
 import com.atilsamancioglu.besinlerkitabigradlework.model.Food
+import com.atilsamancioglu.besinlerkitabigradlework.util.downloadImage
+import com.atilsamancioglu.besinlerkitabigradlework.util.makePlaceHolder
 import com.atilsamancioglu.besinlerkitabigradlework.view.BesinListesiFragmentDirections
+import kotlinx.android.synthetic.main.besin_recycler_row.view.imageView
 import kotlinx.android.synthetic.main.besin_recycler_row.view.isim
 import kotlinx.android.synthetic.main.besin_recycler_row.view.kalori
 
@@ -31,6 +34,9 @@ class FoodRecyclerAdapter (val foodList:ArrayList<Food>):RecyclerView.Adapter<Fo
         holder.itemView.isim.text = foodList[position].foodName
         holder.itemView.kalori.text = foodList[position].foodCalorie
         //image will be added
+        holder.itemView.imageView.downloadImage(foodList.get(position).foodImageUrl,
+            makePlaceHolder(holder.itemView.context)
+        )
         val selectedElement = foodList[position]
         holder.itemView.setOnClickListener {
             val action = BesinListesiFragmentDirections.actionBesinListesiFragmentToBesinDetayiFragment(1)
