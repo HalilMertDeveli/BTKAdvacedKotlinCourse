@@ -1,15 +1,17 @@
 package com.atilsamancioglu.besinlerkitabigradlework.viewModel
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.atilsamancioglu.besinlerkitabigradlework.model.Food
 import com.atilsamancioglu.besinlerkitabigradlework.service.FoodApiService
+import com.atilsamancioglu.besinlerkitabigradlework.service.FoodDatabase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
 
-class FoodListViewModel : ViewModel() {
+class FoodListViewModel(application: Application) : BaseViewModel(application) {
     val foodList = MutableLiveData<List<Food>>()
     val foodErrorMessage = MutableLiveData<Boolean>()
     val foodIsLoading = MutableLiveData<Boolean>()
@@ -29,9 +31,7 @@ class FoodListViewModel : ViewModel() {
                     //We use for single observable
                     override fun onSuccess(foodListInstance: List<Food>) {
                         //we the operation is success
-                        foodList.value = foodListInstance
-                        foodIsLoading.value = false
-                        foodErrorMessage.value = false
+                        saveOnSqlite(foodListInstance)
 
 
                     }
@@ -54,5 +54,29 @@ class FoodListViewModel : ViewModel() {
     private fun getDataFromEthernet() {
         foodIsLoading.value = true//we set the loading bar visible for loading
 
+    }
+
+    private fun showFoods(foodListInstance:List<Food>){
+        foodList.value = foodListInstance
+        foodIsLoading.value = false
+        foodErrorMessage.value = false
+    }
+    private fun saveOnSqlite(foodList:List<Food>){
+        launch {
+            val dao = FoodDatabase(getApplication()).foodDao()
+
+            dao.deleteAllFood()
+
+            val uuidList = dao.insertAll(*foodList.toTypedArray())
+
+            var i = 0
+            while (i<uuidList.size){
+                foodList[i].uuid = uuidList[i].toInt()
+                i+=1
+
+            }
+
+            showFoods(foodList)
+        }
     }
 }
