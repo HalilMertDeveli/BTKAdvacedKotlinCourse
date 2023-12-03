@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.atilsamancioglu.besinlerkitabigradlework.model.Food
 import com.atilsamancioglu.besinlerkitabigradlework.service.FoodApiService
 import com.atilsamancioglu.besinlerkitabigradlework.service.FoodDatabase
+import com.atilsamancioglu.besinlerkitabigradlework.util.PrivateSharedPreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -15,6 +16,8 @@ class FoodListViewModel(application: Application) : BaseViewModel(application) {
     val foodList = MutableLiveData<List<Food>>()
     val foodErrorMessage = MutableLiveData<Boolean>()
     val foodIsLoading = MutableLiveData<Boolean>()
+    private val privateSharedPreferencesInstance = PrivateSharedPreferences(getApplication())
+
 
     private val foodApiService = FoodApiService()//we get an instance from api service
     private val disposable =
@@ -56,12 +59,13 @@ class FoodListViewModel(application: Application) : BaseViewModel(application) {
 
     }
 
-    private fun showFoods(foodListInstance:List<Food>){
+    private fun showFoods(foodListInstance: List<Food>) {
         foodList.value = foodListInstance
         foodIsLoading.value = false
         foodErrorMessage.value = false
     }
-    private fun saveOnSqlite(foodList:List<Food>){
+
+    private fun saveOnSqlite(foodList: List<Food>) {
         launch {
             val dao = FoodDatabase(getApplication()).foodDao()
 
@@ -70,13 +74,14 @@ class FoodListViewModel(application: Application) : BaseViewModel(application) {
             val uuidList = dao.insertAll(*foodList.toTypedArray())
 
             var i = 0
-            while (i<uuidList.size){
+            while (i < uuidList.size) {
                 foodList[i].uuid = uuidList[i].toInt()
-                i+=1
+                i += 1
 
             }
 
             showFoods(foodList)
         }
+        privateSharedPreferencesInstance.saveTime(System.nanoTime())
     }
 }
