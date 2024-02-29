@@ -9,6 +9,9 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
+        configurations.configureEach {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
         applicationId "com.atilsamancioglu.besinlerkitabigradlework"
         minSdkVersion 22
         targetSdkVersion 30
@@ -48,28 +51,27 @@ dependencies {
     def glideVersion = '4.11.0'
     def rxJavaVersion = '2.2.8'
     def rxAndroidVersion = '2.1.1'
-    def roomVersion = '2.2.3'
-    def navVersion = '2.3.0'
+    def roomVersion = '2.6.1'
+    def navVersion = '2.7.7'
     def preference_version ="1.2.1"
 
 
-    implementation "androidx.preference:preference:$preference_version"
     implementation "androidx.preference:preference-ktx:$preference_version"
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
     implementation "com.google.android.material:material:1.1.0"
